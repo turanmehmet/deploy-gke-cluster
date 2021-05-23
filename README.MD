@@ -33,3 +33,20 @@ google_region            = "us-central1-a"
 cluster_name             = "cluster1"
 cluster_node_count       = 2
 ```
+
+### 1.4 Initializing the backend configuration and terraform
+
+Run the following command in the gke-cluster directory to set the backend.tf file and state file in the cloud storage. This script will also run `terraform init` command. 
+
+```
+source set-env.sh gke-cluster.tfvars
+```
+
+### 1.5 Creating the cluster
+
+And the last step is to apply terraform configuration. To do that run the following command
+
+```
+terraform apply -var-file=gke-cluster.tfvars
+```
+It should complete creating the cluster in about 3 mins. 

@@ -25,3 +25,10 @@ variable "cluster_version" {
 variable "google_credentials_json" {
   default = "service-account.json"
 }
+
+variable "deployment_environment" {
+  default = "dev"
+}
+
+variable "google_bucket_name" {
+}
