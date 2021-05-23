@@ -49,4 +49,9 @@ And the last step is to apply terraform configuration. To do that run the follow
 ```
 terraform apply -var-file=gke-cluster.tfvars
 ```
-It should complete creating the cluster in about 3 mins. 
+Say `yes` if you want to apply the changes. Then wait to complete creating the cluster in about 3 mins. 
+
+### 1.6 Connecting to the cluster
+
+Go to your google cloud console from the menu find Kubernetes Engine > Clusters. You should be able to identify your cluster name there. Click on that cluster name and find the connect button on the top. It will give you one line command to connect to your cluster. After running the command, you are now be able to see your nodes `kubectl get nodes`
+
