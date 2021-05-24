@@ -10,17 +10,19 @@ Go to your google console > IAM > Service Account. Create your service account w
 
 Create the following file in the gke-cluster directory called
 
-`service-account.json`
+```service-account.json```
 
 and paste it in this json file.
 
-### 1.2. Create a bucket
+### 1.2. Create a bucket in GCloud
 
 Go to your cloud storage and create a bucket.
 
-### 1.3. Create tfvars
+### 1.3. Create tfvars file
 
-In the gke-cluster directory create a new file with a name called `gke-cluster.tfvars` and edit the following values
+In the gke-cluster directory create a new file with a name called 
+
+```gke-cluster.tfvars```  and edit the following values
 
 ```
 google_project_id        = "PROJECT ID"
@@ -42,7 +44,7 @@ Run the following command in the gke-cluster directory to set the backend.tf fil
 source set-env.sh gke-cluster.tfvars
 ```
 
-### 1.5 Creating the cluster
+### 1.5 Creating the cluster with terraform 
 
 And the last step is to apply terraform configuration. To do that run the following command
 
@@ -53,17 +55,25 @@ Say `yes` if you want to apply the changes. Then wait to complete creating the c
 
 ### 1.6 Connecting to the cluster
 
-Go to your google cloud console from the menu find Kubernetes Engine > Clusters. You should be able to identify your cluster name there. Click on that cluster name and find the connect button on the top. It will give you one line command to connect to your cluster. After running the command, you are now be able to see your nodes `kubectl get nodes`
+Go to your google cloud console from the menu find Kubernetes Engine > Clusters. You should be able to identify your cluster name there. Click on that cluster name and find the connect button on the top. It will give you one line command to connect to your cluster. After running the command, you are now be able to see your nodes 
+
+```kubectl get nodes```
 
 
 ## 2. Creating Nginx ingress controller
 
 We will change our working directory to /nginx-controller/
 
-`cd ../nginx-controller/`
+```cd ../nginx-controller/```
 
 
 ### 2.1 Creating nginx-controller.tfvars file
+
+In the nginx-controller directory create a new file with a name called 
+
+```nginx-controller.tfvars```
+
+and copy the following data in that tfvars
 
 ```
 google_credentials_json = "service-account.json"
