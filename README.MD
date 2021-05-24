@@ -111,3 +111,4 @@ To see what we create on our cluster
 
 ```kubectl get all -n ingress```
 
+There should be a deployment with replicaset and pod. Also there should be a LoadBalancer service created in the cluster. We get also external IP address. 
