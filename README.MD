@@ -58,6 +58,11 @@ Go to your google cloud console from the menu find Kubernetes Engine > Clusters.
 
 ## 2. Creating Nginx ingress controller
 
+We will change our working directory to /nginx-controller/
+
+`cd ../nginx-controller/`
+
+
 ### 2.1 Creating nginx-controller.tfvars file
 
 ```
