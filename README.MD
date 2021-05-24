@@ -117,3 +117,20 @@ There should be a deployment with replicaset and pod. Also there should be a Loa
 
 ![alt text](https://github.com/turanmehmet/deploy-gke-cluster-with-ingress/blob/main/nginx-controller.jpg?raw=true)
 
+## Create some resources to test it out
+
+Create the following resources
+
+```
+kubectl run test-pod1 --image=gcr.io/google-samples/hello-app:1.0
+kubectl run test-pod2 --image=gcr.io/google-samples/hello-app:2.0
+kubectl expose pod test-pod1 --type=NodePort --port=80 --target-port=8080 --name=test-service1
+kubectl expose pod test-pod2 --type=NodePort --port=80 --target-port=8080 --name=test-service2
+```
+### Create the ingress to test it
+
+```
+kubectl create -f layer7-nginx-ingress.yaml
+```
+with annotations we specify to use nginx ingress controller. 
+Either you create a dns record for the IP address or add the IP address to your /etc/host file to see the result in your browser
