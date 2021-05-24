@@ -113,3 +113,7 @@ To see what we create on our cluster
 
 There should be a deployment with replicaset and pod. Also there should be a LoadBalancer service created in the cluster. We get also external IP address. 
 
+# Here is the structure
+
+![alt text](https://github.com/turanmehmet/deploy-gke-cluster-with-ingress/blob/main/nginx-controller.jpg?raw=true)
+
