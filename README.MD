@@ -88,3 +88,26 @@ we will be using the same service account. So I am just copying it into my direc
 
 `cp ../gke-cluster/service-account.json  . `
 
+### 2.3 Initializing the backend configuration and terraform init
+
+Run the following command in the nginx-controller directory to set the backend.tf file and state file in the cloud storage. This script will also run `terraform init` command. 
+
+```
+source set-env.sh nginx-controller.tfvars
+```
+
+### 2.4 Terraform apply to create resources namespace and helm 
+
+And the last step is to apply terraform configuration. To do that run the following command
+
+```
+terraform apply -var-file=nginx-controller.tfvars
+```
+Say `yes` if you want to apply the changes. Then wait to complete creating the cluster in about 3 mins. 
+
+### 2.5 Get the resources
+
+To see what we create on our cluster
+
+```kubectl get all -n ingress```
+
