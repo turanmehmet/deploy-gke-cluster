@@ -55,3 +55,21 @@ Say `yes` if you want to apply the changes. Then wait to complete creating the c
 
 Go to your google cloud console from the menu find Kubernetes Engine > Clusters. You should be able to identify your cluster name there. Click on that cluster name and find the connect button on the top. It will give you one line command to connect to your cluster. After running the command, you are now be able to see your nodes `kubectl get nodes`
 
+
+## 2. Creating Nginx ingress controller
+
+### 2.1 Creating nginx-controller.tfvars file
+
+```
+google_credentials_json = "service-account.json"
+google_bucket_name = "bucket-name"
+deployment_name = "nginx-controller"
+google_project_id = "your-project-id"
+deployment_environment = "dev"
+```
+### 2.2 Copying service-account.json file 
+
+we will be using the same service account. So I am just copying it into my directory
+
+`cp ../gke-cluster/service-account.json  . `
+
