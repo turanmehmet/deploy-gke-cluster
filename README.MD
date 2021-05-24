@@ -2,11 +2,11 @@
 Creates a cluster in Google Cloud and install and Ingress Controller using Nginx Ingress Controller
 
 ## 1. Deploy GKE Cluster
-Let's start with deploying our cluster first
+Let's start with deploying our cluster on Google Cloud with Terraform
 
 ### 1.1. Create Service account
 
-Go to your google console > IAM > Service Account. Create your service account with Basic and Owner type. This will give us full access to our cloud account. Create a key in json format and copy the content
+Go to your google console > IAM > Service Account. Create your service account with Basic and Owner type. This will give you full access to your cloud account. Create a key in json format and copy the content
 
 Create the following file in the gke-cluster directory called
 
@@ -16,7 +16,7 @@ and paste it in this json file.
 
 ### 1.2. Create a bucket in GCloud
 
-Go to your cloud storage and create a bucket.
+Go to your cloud storage and create a bucket. We will us this storage for terraform state files
 
 ### 1.3. Create tfvars file
 
@@ -142,3 +142,4 @@ Either you create a dns record for the IP address or add the IP address to your 
 cd gke-cluster/
 terraform destroy -var-file=gke-cluster.tfvars
 ```
+Say `yes` if you want to destroy all resources.
