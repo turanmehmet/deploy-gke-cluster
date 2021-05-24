@@ -133,4 +133,12 @@ kubectl expose pod test-pod2 --type=NodePort --port=80 --target-port=8080 --name
 kubectl create -f layer7-nginx-ingress.yaml
 ```
 with annotations we specify to use nginx ingress controller. 
+
 Either you create a dns record for the IP address or add the IP address to your /etc/host file to see the result in your browser
+
+## Destroy the resources
+
+```
+cd gke-cluster/
+terraform destroy -var-file=gke-cluster.tfvars
+```
