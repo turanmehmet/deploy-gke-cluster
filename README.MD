@@ -1,5 +1,5 @@
-# Deploy GKE Cluster with Nginx Controller
-Creates a cluster in Google Cloud and install and Ingress Controller using Nginx Ingress Controller
+# Deploy GKE Cluster
+Creates a cluster in Google Cloud
 
 ## 1. Deploy GKE Cluster
 Let's start with deploying our cluster on Google Cloud with Terraform
@@ -60,83 +60,7 @@ Go to your google cloud console from the menu find Kubernetes Engine > Clusters.
 ```kubectl get nodes```
 
 
-## 2. Creating Nginx ingress controller
-
-We will change our working directory to /nginx-controller/
-
-```cd ../nginx-controller/```
-
-
-### 2.1 Creating nginx-controller.tfvars file
-
-In the nginx-controller directory create a new file with a name called 
-
-```nginx-controller.tfvars```
-
-and copy the following data in that tfvars
-
-```
-google_credentials_json = "service-account.json"
-google_bucket_name = "bucket-name"
-deployment_name = "nginx-controller"
-google_project_id = "your-project-id"
-deployment_environment = "dev"
-```
-### 2.2 Copying service-account.json file 
-
-we will be using the same service account. So I am just copying it into my directory
-
-`cp ../gke-cluster/service-account.json  . `
-
-### 2.3 Initializing the backend configuration and terraform init
-
-Run the following command in the nginx-controller directory to set the backend.tf file and state file in the cloud storage. This script will also run `terraform init` command. 
-
-```
-source set-env.sh nginx-controller.tfvars
-```
-
-### 2.4 Terraform apply to create resources namespace and helm 
-
-And the last step is to apply terraform configuration. To do that run the following command
-
-```
-terraform apply -var-file=nginx-controller.tfvars
-```
-Say `yes` if you want to apply the changes. Then wait to complete creating the cluster in about 3 mins. 
-
-### 2.5 Get the resources
-
-To see what we create on our cluster
-
-```kubectl get all -n ingress```
-
-There should be a deployment with replicaset and pod. Also there should be a LoadBalancer service created in the cluster. We get also external IP address. 
-
-# Here is the structure
-
-![alt text](https://github.com/turanmehmet/deploy-gke-cluster-with-ingress/blob/main/nginx-controller.jpg?raw=true)
-
-## Create some resources to test it out
-
-Create the following resources
-
-```
-kubectl run test-pod1 --image=gcr.io/google-samples/hello-app:1.0
-kubectl run test-pod2 --image=gcr.io/google-samples/hello-app:2.0
-kubectl expose pod test-pod1 --type=NodePort --port=80 --target-port=8080 --name=test-service1
-kubectl expose pod test-pod2 --type=NodePort --port=80 --target-port=8080 --name=test-service2
-```
-### Create the ingress to test it
-
-```
-kubectl create -f layer7-nginx-ingress.yaml
-```
-with annotations we specify to use nginx ingress controller. 
-
-Either you create a dns record for the IP address or add the IP address to your /etc/host file to see the result in your browser
-
-## Destroy the resources
+### 1.7 Destroy the resources
 
 ```
 cd gke-cluster/
