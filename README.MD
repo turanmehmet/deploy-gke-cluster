@@ -8,7 +8,7 @@ Let's start with deploying our cluster on Google Cloud with Terraform
 
 Go to your google console > IAM > Service Account. Create your service account with Basic and Owner type. This will give you full access to your cloud account. Create a key in json format and copy the content
 
-Create the following file in the gke-cluster directory called
+Create the following file in the current directory called
 
 ```service-account.json```
 
@@ -20,7 +20,7 @@ Go to your cloud storage and create a bucket. We will us this storage for terraf
 
 ### 1.3. Create tfvars file
 
-In the gke-cluster directory create a new file with a name called 
+In the current directory create a new file with a name called 
 
 ```gke-cluster.tfvars```  and edit the following values
 
@@ -38,7 +38,7 @@ cluster_node_count       = 2
 
 ### 1.4 Initializing the backend configuration and terraform
 
-Run the following command in the gke-cluster directory to set the backend.tf file and state file in the cloud storage. This script will also run `terraform init` command. 
+Run the following command in the current directory to set the backend.tf file and state file in the cloud storage. This script will also run `terraform init` command. 
 
 ```
 source set-env.sh gke-cluster.tfvars
@@ -63,7 +63,6 @@ Go to your google cloud console from the menu find Kubernetes Engine > Clusters.
 ### 1.7 Destroy the resources
 
 ```
-cd gke-cluster/
 terraform destroy -var-file=gke-cluster.tfvars
 ```
 Say `yes` if you want to destroy all resources.
