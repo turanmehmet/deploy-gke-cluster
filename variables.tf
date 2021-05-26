@@ -31,4 +31,5 @@ variable "deployment_environment" {
 }
 
 variable "google_bucket_name" {
+    default = "bucket_name"
 }

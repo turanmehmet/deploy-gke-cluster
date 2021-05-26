@@ -1,9 +1,15 @@
 module "gke_cluster" {
-  source             = "../modules/terraform-gke/"
-  cluster_name       = var.cluster_name
-  google_region      = var.google_region
-  google_project_id  = var.google_project_id
-  cluster_node_count = var.cluster_node_count
-  cluster_version    = var.cluster_version
-  google_credentials = var.google_credentials_json
+    source                   = "/module"
+    google_project_id        = var.google_project_id
+    cluster_name             = var.cluster_name
+    cluster_version          = var.cluster_version
+    cluster_node_count       = var.cluster_node_count
+    google_region            = var.google_region
+    google_bucket_name       = var.google_bucket_name
+    deployment_environment   = var.deployment_environment
+    deployment_name          = var.deployment_name
+    google_credentials_json  = var.google_credentials_json
 }
+
+
+

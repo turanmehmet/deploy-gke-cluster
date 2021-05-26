@@ -8,7 +8,7 @@ Let's start with deploying our cluster on Google Cloud with Terraform
 
 Go to your google console > IAM > Service Account. Create your service account with Basic and Owner type. This will give you full access to your cloud account. Create a key in json format and copy the content
 
-Create the following file in the current directory called
+Create the following file in the current directory called;
 
 ```service-account.json```
 
@@ -26,14 +26,14 @@ In the current directory create a new file with a name called
 
 ```
 google_project_id        = "PROJECT ID"
+cluster_name             = "cluster1"
 cluster_version          = "1.17"
+cluster_node_count       = 2
+google_region            = "us-central1-a"
 google_bucket_name       = "bucket_name"
 deployment_environment   = "dev"
-google_credentials_json  = "service-account.json"
 deployment_name          = "gke-cluster"
-google_region            = "us-central1-a"
-cluster_name             = "cluster1"
-cluster_node_count       = 2
+google_credentials_json  = "service-account.json"
 ```
 
 ### 1.4 Initializing the backend configuration and terraform
